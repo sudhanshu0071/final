@@ -211,9 +211,10 @@
             document.getElementById('pul' + i).onclick = plus_click;
             document.getElementById('min' + i).onclick = minus_click;
 
-            document.getElementById("num" + i).innerText = a;
+            
             if (cartitem.includes(document.getElementById("name" + i).innerHTML) == true) {
-                { document.getElementById("add" + i).style.display = "none" }
+                 document.getElementById("add" + i).style.display = "none";
+                 document.getElementById("num" + i).innerText = a;                                                       }
             } else { document.getElementById("count" + i).style.display = "none" };
 
 
