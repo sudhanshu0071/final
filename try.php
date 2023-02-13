@@ -21,7 +21,7 @@
         $query = "SELECT `phone` FROM `tdb`.`users` WHERE `phone` = '$number'";
         $fire = mysqli_query($con,$query) or die("can not fire querry");
         if(mysqli_num_rows($fire)>0){
-            header("Location: index.html");
+            header("Location: home.html");
         }
         ?>
 
