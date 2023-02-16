@@ -128,8 +128,10 @@
             var code = document.getElementById('verificationcode').value;
             confirmationResult.confirm(code).then((result) => {
                 // User signed in successfully.
-                console.log('OTP Verified');
+                //console.log('OTP Verified');
                 // console.log(number);
+               var number = document.getElementById('number').value;
+                window.Kodular.setWebViewString(number);
                 checkdata();
             }).catch((error) => {
                 document.getElementById('wrongotp').innerText = "Incorrect OTP!!!!";
