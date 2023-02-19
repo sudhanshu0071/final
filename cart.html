@@ -192,14 +192,14 @@
 
         function addaddr() {
             var house_number = document.getElementById('houseno').value,
+                phone = localStorage.getItem('number'),
                 colony = document.getElementById('colony').value,
-                phone = document.getElementById('phoneadd').value,
                 loca = localStorage.getItem('cor'),
                 item = cartitem,
                 d= new Date(),
                 date = d.getDate()+","+d.getMonth()+","+d.getFullYear(),
                 time = d.getHours()+":"+d.getMinutes();
-
+                document.getElementById('phoneadd').value = phone,
 
 
 
@@ -237,7 +237,9 @@
 
         }
 
+        
         document.getElementById('checkout').onclick = addaddr;
+        
     </script>
 
 
@@ -259,7 +261,7 @@
                     <label class="sr-only">Colony</label>
                     <input type="text" id="colony" class="form-control my-4" placeholder="Colony">
                     <label class="sr-only">Phone Number</label>
-                    <input type="text" id="phoneadd" class="form-control my-4" placeholder="Phone Number">
+                    <input type="text" id="phoneadd" class="form-control my-4" placeholder="">
                 </div>
             </div>
             <div class="modal-footer">
@@ -361,6 +363,7 @@
         // loop through data source
         var x = cartitem.length;
         var number = localStorage.getItem("number");
+        document.getElementById('phoneadd').value= number;
         console.log(cartitem.length)
         if (x == "0") {
             document.getElementById('opmap').disabled = true;
