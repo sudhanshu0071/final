@@ -14,62 +14,62 @@
 </head>
 
 <body>
-<div class="sticky-top  bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand text-danger font-weight-bold" href="home.html">
-            THEKEDAAR
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="sticky-top  bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand text-danger font-weight-bold" href="home.html">
+                THEKEDAAR
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Category
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="plumber.html">Plumbers</a>
-                        <a class="dropdown-item" href="electrician.html">Electricians</a>
-                        <a class="dropdown-item" href="#">Painters</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Products</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Meet The Team</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="support.html">Support</a>
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Category
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="plumber.html">Plumbers</a>
+                            <a class="dropdown-item" href="electrician.html">Electricians</a>
+                            <a class="dropdown-item" href="#">Painters</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Products</a>
+                        </div>
                     </li>
                 </ul>
-                <a class="btn btn-outline-success my-2 my-sm-0" href="cart.html">Cart</a>
-            </form>
-        </div>
-    </nav>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Meet The Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="support.html">Support</a>
+                        </li>
+                    </ul>
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="cart.html">Cart</a>
+                </form>
+            </div>
+        </nav>
 
-    <h5 class="text-light mx-2">Your Booking</h5>
+        <h5 class="text-light mx-2">Your Booking</h5>
 
 
-    <label for="inputsearch" class="sr-only">Search</label>
-    <input type="text" id="search" class="form-control my-2" placeholder="Search">
-</div>
-<div class="container">
-    <div class="container" id='1orde'>No order yet...</div>
+        <label for="inputsearch" class="sr-only">Search</label>
+        <input type="text" id="search" class="form-control my-2" placeholder="Search">
+    </div>
+    <div class="container">
+        <div class="container" id='1orde'> </div>
 
-</div>
+    </div>
 
 
 
@@ -108,40 +108,42 @@
         //         });
         //         console.log(item);
         //     })
+        // if (document.getElementById("1orde").innerHTML = " ") {
+        //     document.getElementById("1orde").innerHTML = "No Order yet..."
+        // } else { document.getElementById("1orde").innerHTML = "" }
+        document.getElementById("1orde").innerHTML = "No Order yet...";
+        function nodata(){
+            if (document.getElementById("1orde").innerHTML == "") {
+            document.getElementById("1orde").innerHTML = "No Order yet...";
+        }
+        }
+        
+        
+
 
         db.collection("order").where("phone", "==", number).get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
+            document.getElementById("1orde").innerHTML = "";
+                querySnapshot.forEach((doc) => {
                 console.log(`${doc.data().date} => ${doc.data().item}`);
                 var s = `${doc.data().item.length}`;
-                // const temp = JSON.parse(`${doc.data().item}`);
-                console.log(s);
 
-                // localStorage.setItem("orders", `${doc.data().item}`)
-                // var s = itm.length;
-                // console.log(itm[i]);
-                // var i = "0";
-                // for (let i = 0; i < s; i++) {
-                //     i = `${doc.data().item[i]}`;
-                //     console.log(i);
-                // }
+            
+                console.log(s);  
                 let text = "";
                 for (let i = 0; i < s; i++) {
                     text += `${doc.data().item[i]}` + "<br>";
                 }
-                document.getElementById( "1orde").innerHTML += text+"<br> <p><small> Booked on "+`${doc.data().date}  ${doc.data().time}`+ "</small></p><hr>";
-
-                
-
-
-                // for (i = 0; i < s; i++) {
-                //     console.log(`${doc.data().item[i]}`)
-                //     // document.getElementById(i + "orde").innerText = `${doc.data().item[i]}`;
-                // }
-
-
+                document.getElementById("1orde").innerHTML += text + "<br> <p><small> Booked on " + `${doc.data().date}  ${doc.data().time}` + "</small></p><hr>";
+            
+        
 
             });
-        });
+        }).then(nodata);
+
+
+        
+
+ 
 
 
     </script>
