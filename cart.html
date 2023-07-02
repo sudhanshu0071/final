@@ -162,7 +162,7 @@
     <div class="text-center full-height" id="mapdiv" style="height: 100%; ">
         <h5>H.R.Traders</h5>
         <!-- <a href="https://ibb.co/7QpKKvj"><img src="https://i.ibb.co/PMWggxF/polotno.png" alt="polotno" border="0"></a> -->
-        <div class="my-2 map" style="height: 85%;" id="map">
+        <div class="my-2 map" style="height: 100%;" id="map">
         </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
@@ -235,9 +235,9 @@
                 localStorage.setItem("cor", e.latlng.lat + ', ' + e.latlng.lng)
                 var result = (circle.contains(marker.getLatLng())) ? 'inside' : 'outside';
                 if (result == "outside") {
-                    marker.bindPopup(e.latlng.lat +', '+ e.latlng.lng +'Mishra ji ka area');
+                    marker.bindPopup('Mishra ji ka area');
                     marker.openPopup();
-                } else { marker.bindPopup(e.latlng.lat+ ', ' + e.latlng.lng+ 'Humara area');
+                } else { marker.bindPopup('Humara area');
                     marker.openPopup(); }
 
 
