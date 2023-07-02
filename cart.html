@@ -191,7 +191,7 @@
                 attribution: '&copy; Thekedaar'
             }).addTo(map);
 
-            var marker = L.marker([27.134504, 81.9538665]).addTo(map);
+            
 
 
             map.locate({ setView: true, maxZoom: 16 });
@@ -231,6 +231,7 @@
 
 
             map.on('click', function (e) {
+                var marker = L.marker([27.134504, 81.9538665]).addTo(map);
                 marker.setLatLng(e.latlng)
                 localStorage.setItem("cor", e.latlng.lat + ', ' + e.latlng.lng)
                 var result = (circle.contains(marker.getLatLng())) ? 'inside' : 'outside';
