@@ -160,13 +160,9 @@
 
 
     <div class="text-center full-height" id="mapdiv" style="height: 100%; ">
-        <h5>Choose service location</h5>
+        <h5>H.R.Traders</h5>
         <!-- <a href="https://ibb.co/7QpKKvj"><img src="https://i.ibb.co/PMWggxF/polotno.png" alt="polotno" border="0"></a> -->
         <div class="my-2 map" style="height: 85%;" id="map">
-        </div>
-        <div class="text-center fixed-bottom">
-            <button type="button" class="btn btn-lg btn-success my-3" style="width: 90%;" data-toggle="modal"
-                data-target="#exampleModalCenter" id="compadd">Enter complete address</button>
         </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
@@ -174,103 +170,7 @@
     <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyDvcquV8zvs9cDNaeTcKGV24wy8BynQb6w",
-            authDomain: "thekedaar-cdb2b.firebaseapp.com",
-            databaseURL: "https://thekedaar-cdb2b-default-rtdb.firebaseio.com",
-            projectId: "thekedaar-cdb2b",
-            storageBucket: "thekedaar-cdb2b.appspot.com",
-            messagingSenderId: "67281797521",
-            appId: "1:67281797521:web:e54cedabd6b59f71535a30"
-        };
 
-        firebase.initializeApp(firebaseConfig);
-
-        var db = firebase.firestore();
-
-        function addaddr() {
-            var house_number = document.getElementById('houseno').value,
-                phone = localStorage.getItem('number'),
-                colony = document.getElementById('colony').value,
-                loca = localStorage.getItem('cor'),
-                item = cartitem,
-                d= new Date(),
-                date = d.getDate()+","+d.getMonth()+","+d.getFullYear(),
-                time = d.getHours()+":"+d.getMinutes();
-                document.getElementById('phoneadd').value = phone,
-
-
-
-
-
-            db.collection("order").add({
-                phone: phone,
-                house_no: house_number,
-                colony: colony,
-                item: item,
-                date: date,
-                time: time,
-                location: loca
-            })
-                .then((docRef) => {
-                    console.log("order placed successfully ");
-                    document.getElementById('navdiv').style.display = 'block';
-                    document.getElementById('cartdiv').style.display = 'block';
-                    document.getElementById('mapdiv').style.display = 'none';
-                    localStorage.clear();
-                    localStorage.setItem('number',number);
-                    //document.getElementById('warnop').innerText = "order placed successfully ";
-            
-                    window.location.reload()
-                    // document.getElementById("0b").innerHTML = "";
-                    // for (i = 1; i < 20; i++) {
-                    //     document.getElementById(i + "a").innerHTML = "";
-                    //     document.getElementById(i + "b").innerHTML = "";
-                    // }
-                })
-                .catch((error) => {
-                    console.error("Error adding document: ", error);
-                });
-
-
-        }
-
-        
-        document.getElementById('checkout').onclick = addaddr;
-        
-    </script>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document" style="position:absolute;bottom:0;margin:0;width:100%"">
-      <div class=" modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Enter complete address</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid" id="sender">
-                    <label class="sr-only">House Number</label>
-                    <input type="text" id="houseno" class="form-control my-4" placeholder="House Number">
-                    <label class="sr-only">Colony</label>
-                    <input type="text" id="colony" class="form-control my-4" placeholder="Colony">
-                    <label class="sr-only">Phone Number</label>
-                    <input type="text" id="phoneadd" class="form-control my-4" placeholder="">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="checkout" class="btn btn-primary" data-dismiss="modal">Checkout</button>
-            </div>
-        </div>
-    </div>
-    </div>
 
 
 
@@ -318,10 +218,10 @@
 
 
             var circle = L.circle([27.133875, 81.961990], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5,
-                radius: 4000
+                color: 'blue',
+                fillColor: 'blue',
+                fillOpacity: 0.3,
+                radius: 5000
             }).addTo(map);
             L.Circle.include({
                 contains: function (latLng) {
@@ -335,10 +235,10 @@
                 localStorage.setItem("cor", e.latlng.lat + ', ' + e.latlng.lng)
                 var result = (circle.contains(marker.getLatLng())) ? 'inside' : 'outside';
                 if (result == "outside") {
-                    marker.bindPopup('Sorry!!! We will be reaching soon in our area');
+                    marker.bindPopup('Mishra ji ka area');
                     marker.openPopup();
-                    document.getElementById('compadd').disabled = true;
-                } else { document.getElementById('compadd').disabled = false; }
+                } else { marker.bindPopup('Humara area');
+                    marker.openPopup(); }
 
 
             });
@@ -352,7 +252,7 @@
 
     </script>
 
-    <script src="fin.js"></script>
+    <script src="fin.js"> </script>
     <script>
         // Table data -- an array of objects
         // var jsData = cartitem ;
