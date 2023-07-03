@@ -236,9 +236,9 @@
                 localStorage.setItem("cor", e.latlng.lat + ', ' + e.latlng.lng)
                 var result = (circle.contains(marker.getLatLng())) ? 'inside' : 'outside';
                 if (result == "outside") {
-                    marker.bindPopup('Mishra ji ka area');
+                    marker.bindPopup('Others');
                     marker.openPopup();
-                } else { marker.bindPopup('Humara area');
+                } else { marker.bindPopup('H.R. Traders');
                     marker.openPopup(); }
 
 
